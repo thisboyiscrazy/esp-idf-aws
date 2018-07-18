@@ -14,6 +14,9 @@
  * @key_out: Signing key in binary 
  */
 
+#ifndef AWSHEADERS
+#define AWSHEADERS
+
 #define AWS_EMPTY_SHA256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 #define SHA256_MAC_HEX_LEN SHA256_MAC_LEN * 2
 #define SHA256_MAC_HEX_LEN_STR SHA256_MAC_HEX_LEN + 1
@@ -56,3 +59,5 @@ struct aws_request {
 
 int aws_auth_v4_signing_key(struct aws_request *request);
 int aws_s3_get_auth_v4_header(struct aws_request *request);
+
+#endif

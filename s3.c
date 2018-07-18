@@ -13,6 +13,8 @@ size_t aws_s3_create_request(struct aws_request *r, char * out, size_t len) {
     size_t l = snprintf(NULL, 0, host_s, r->host, r->path) + 1;
     r->url = (char *)malloc(l);
     snprintf(r->url, l, host_s, r->host, r->path);
+
+    printf("---URL\n%s\n%s\n---",r->path,r->url);
     
     r->service = "s3";
     r->content_sha = AWS_EMPTY_SHA256;
@@ -95,6 +97,8 @@ size_t aws_s3_get(struct aws_request *r, void *out, size_t len) {
             return -1;
         }
     } while(written_bytes < strlen(request));
+
+    printf("---REQUEST\n%s\n---",request);
 
     char buf[512];
     int received = 0;
